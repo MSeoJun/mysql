@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset ="utf-8" />
+  <title>회원가입 페이지</title>
+  <script>
+  /*아이디 확인*/ 
+  function idcheck() {
+      var id = document.getElementById('id').value;
+         
+        if(id == ""){ 
+        alert('아이디를 입력하여 주십시요.')
+        return;
+        } else{
+            alert(''+id+'는 사용가능한 아이디 입니다.');
+        }
+  }
+  /*비밀번호 확인*/
+  function pwcheck() {
+      var pw = document.getElementById('pw').value;
+      var pwa = document.getElementById('pwa').value;
+      
+      if(pw == "" || pwa == ""){
+          alert('비밀번호를 입력해주세요.');
+          return;
+      }
+
+      if (pw==pwa){
+        alert('비밀번호가 일치합니다.');
+        return;
+      } else {          
+        alert('비밀번호가 다릅니다.');
+        return;
+      }
+      
+ }
+  
+  </script>
+ <style>
+  
+ </style> 
+</head>
+  <body>
+    <center>
+      <h1>회원가입</h1>
+        <table border="1" width="600" height+"150" bgcolor=d3d3d3>
+          <tr>
+        <td><h4> 아이디</h4></td> : <td><input type="text" name="id" id='id' value="" / />
+        <button onclick="idcheck()">아이디 확인</button></h4></td>
+      </tr>
+      <td><h4>비밀번호</td> : <td><input type="password" name="pw" id='pw' value=''/ ></h4></td>
+      </tr>
+      <td><h4>비밀번호 재확인</td> : <td><input type="password" name="pwa" id='pwa' value=""/ />
+        <button onclick="pwcheck()">비밀번호 확인</button></h4></td>
+      </tr>
+      <td><h4>이름</td> : <td><input type="text" name="name" value="" /></h4></td>
+      </tr>
+      <td><h4>생년월일</h4>
+     
+        <td><input type="text" name="year" size="3" placeholder="년(4자)"/>
+            <select name="month">
+                    <option value="월" selected(초기 선택된 항목)>월</option>
+                    <option value="1월">1월</option>
+                    <option value="2월">2월</option>
+                    <option value="3월">3월</option>
+                    <option value="4월">4월</option>
+                    <option value="5월">5월</option>
+                    <option value="6월">6월</option>
+                    <option value="7월">7월</option>
+                    <option value="8월">8월</option>
+                    <option value="9월">9월</option>
+                    <option value="10월">10월</option>
+                    <option value="11월">11월</option>
+                    <option value="12월">12월</option>
+                </select>
+                <input type="text" name="day" size="3" placeholder="일"/></td>
+              </tr>
+              <tr>
+                <td><select name="gender" width:15px>
+                    <option value="성별" selected(초기 선택된 항목)>성별</option>
+                    <option value="남자">남자</option>
+                    <option value="여자">여자</option></td>
+        </select>
+      </tr>
+      <td><h4>본인 확인 이메일</td> : <td><input type="text" name="email" /></h4></td>
+      </tr>
+      <td><h4>전화번호</td> : <td><input type="text" name="number" placeholder="전화번호 입력"/></h4></td>
+      </tr>
+    </table>
+    <br>
+        <input type="submit" value="가입하기" />
+        <input type="submit" value="취소" onclick = "location.href='login.html'"; />
+    </center>
+  </body>
+</html>

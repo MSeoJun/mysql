@@ -1,0 +1,84 @@
+ <!DOCTYPE html>
+<html> 
+  <head>
+    <title>회원정보</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+
+    <style>
+    td, th {
+      padding: 15px;
+      text-align: center;
+    }
+    </style> 
+  </head>
+  <body>
+    <center>
+    <table border=1; style="font-size: 17px; border-collapse: collapse;">
+      <tr>
+        <td>
+          회원번호
+        </td>
+        <td>
+          이름
+        </td>
+        <td>
+          나이
+        </td>
+        <td>
+          생일
+        </td>
+        <td>
+          주소
+        </td>
+        <td>
+          우편번호
+        </td>
+        <td>
+          취미
+        </td>
+        <td>
+          전화번호
+        </td>
+      </tr>
+    <% for (const result of results) { %> 
+    <tr>
+    <th>
+        <%= result.num %>
+    </th>
+    <td>
+        <%= result.name %>
+    </td>
+    <td>
+        <%= result.age %>
+    </td>
+    <td>
+        <%= result.birth %>
+    </td>
+    <td>
+        <%= result.address %>
+    </td>
+    <td>
+        <%= result.post %>
+    </td>
+    <td>
+        <%= result.hobby %>
+    </td>
+    <td>
+        <%= result.phone %>
+    </td>
+  </tr>
+    <% } %>
+  </table>
+      <!-- <form action="/lgcheck">
+        <button >
+          다음페이지로
+        </button>
+      </form> -->
+      <form action="/logout">
+        <button >
+          로그아웃하러가기
+        </button>
+      </form>
+</center>
+  </body>
+</html>
