@@ -1,95 +1,180 @@
-<!DOCTYPE html>
 <html>
-<head>
-  <meta charset ="utf-8" />
-  <title>회원가입 페이지</title>
+ <head>
+  <title>회원가입</title>
+  <script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
   <script>
-  /*아이디 확인*/ 
-  function idcheck() {
-      var id = document.getElementById('id').value;
-         
-        if(id == ""){ 
-        alert('아이디를 입력하여 주십시요.')
-        return;
-        } else{
-            alert(''+id+'는 사용가능한 아이디 입니다.');
-        }
-  }
-  /*비밀번호 확인*/
-  function pwcheck() {
-      var pw = document.getElementById('pw').value;
-      var pwa = document.getElementById('pwa').value;
-      
-      if(pw == "" || pwa == ""){
-          alert('비밀번호를 입력해주세요.');
-          return;
+ 
+    function check() {
+      const getphone = RegExp(/^[0-9]{2,4}-[0-9]{4}-[0-9]{4}/);
+      const getage = RegExp(/^[0-9]{1,3}$/);
+      const hobbyCheck = false;
+      const getbirth = RegExp(/^[0-9]{4}-[0-9]{2}-[0-9]{2}$/);
+      const getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
+      const getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
+      const getName= RegExp(/^[가-힣]+$/);
+ 
+
+      //이메일 공백 확인
+      if($("#email").val() == ""){
+        alert("이메일을 입력해주세요");
+        $("#email").focus();
+        return false;
+      }
+ 
+      //이메일 유효성 검사
+      if(!getMail.test($("#email").val())){
+        alert("이메일형식에 맞게 입력해주세요")
+        $("#email").val("");
+        $("#email").focus();
+        return false;
+      }
+ 
+      //이름의 유효성 검사
+      if(!getCheck.test($("#tbID").val())){
+        alert("형식에 맞게 입력해주세요");
+        $("#tbID").val("");
+        $("#tbID").focus();
+        return false;
+      }
+ 
+      //비밀번호
+      if(!getCheck.test($("#pw").val())) {
+      alert("비밀번호를 입력해주세요.");
+      $("#pw").val("");
+      $("#pw").focus();
+      return false;
+      }
+ 
+      //비밀번호 똑같은지
+      if($("#pw").val() != ($("#repw").val())){ 
+      alert("비밀번호가 틀렸습니다.");
+      $("#pw").val("");
+      $("#repw").val("");
+      $("#pw").focus();
+      return false;
+     }
+ 
+      //이름 유효성
+      if (!getName.test($("#name").val())) {
+        alert("이름을 똑바로 쓰세요.");
+        $("#name").val("");
+        $("#name").focus();
+        return false;
       }
 
-      if (pw==pwa){
-        alert('비밀번호가 일치합니다.');
-        return;
-      } else {          
-        alert('비밀번호가 다릅니다.');
-        return;
+      if($("#ag").val() == ""){
+                alert("나이를 입력해주세요.");
+                $("#age").focus();
+                return false;
+            }
+
+            //나이 유효성
+            else if (!getage.test($("#age").val())) {
+                alert("나이는 숫자로만 입력해주세요.");
+                $("#age").val("");
+                $("#age").focus();
+                return false;
+            }
+
+        //생일 공백 확인
+        if($("#birth").val() == ""){
+                alert("생년월일을 입력해주세요.");
+                $("#birth").focus();
+                return false;
+            }
+    
+             //생일 유효성
+             else if (!getbirth.test($("#birth").val())) {
+                alert("생년월일은 '년-월-일'로 입력해주세요.");
+                $("#birth").val("");
+                $("#birth").focus();
+                return false;
+            }
+
+         //취미 공백 확인
+         if($("#hobby").val() == ""){
+                alert("취미를 입력해주세요.");
+                $("#hobby").focus();
+                return false;
+            }
+   
+
+        //전화번호 공백 확인
+       if($("#phone").val() == ""){
+                alert("전화번호를 입력해주세요.");
+                $("#phone").focus();
+                return false;
+            }
+
+             //전화번호 유효성
+             else if (!getphone.test($("#phone").val())) {
+                alert("전화번호는 '앞자리-중간자리-끝자리'로 입력해주세요.");
+                $("#phone").val("");
+                $("#phone").focus();
+                return false;
+            }    
+
+      if(check_jumin() ==false){
+        return false;
       }
-      
- }
-  
+
+       
+
+          }
   </script>
- <style>
-  
- </style> 
 </head>
-  <body>
-    <center>
-      <h1>회원가입</h1>
-        <table border="1" width="600" height+"150" bgcolor=d3d3d3>
-          <tr>
-        <td><h4> 아이디</h4></td> : <td><input type="text" name="id" id='id' value="" / />
-        <button onclick="idcheck()">아이디 확인</button></h4></td>
-      </tr>
-      <td><h4>비밀번호</td> : <td><input type="password" name="pw" id='pw' value=''/ ></h4></td>
-      </tr>
-      <td><h4>비밀번호 재확인</td> : <td><input type="password" name="pwa" id='pwa' value=""/ />
-        <button onclick="pwcheck()">비밀번호 확인</button></h4></td>
-      </tr>
-      <td><h4>이름</td> : <td><input type="text" name="name" value="" /></h4></td>
-      </tr>
-      <td><h4>생년월일</h4>
-     
-        <td><input type="text" name="year" size="3" placeholder="년(4자)"/>
-            <select name="month">
-                    <option value="월" selected(초기 선택된 항목)>월</option>
-                    <option value="1월">1월</option>
-                    <option value="2월">2월</option>
-                    <option value="3월">3월</option>
-                    <option value="4월">4월</option>
-                    <option value="5월">5월</option>
-                    <option value="6월">6월</option>
-                    <option value="7월">7월</option>
-                    <option value="8월">8월</option>
-                    <option value="9월">9월</option>
-                    <option value="10월">10월</option>
-                    <option value="11월">11월</option>
-                    <option value="12월">12월</option>
-                </select>
-                <input type="text" name="day" size="3" placeholder="일"/></td>
-              </tr>
-              <tr>
-                <td><select name="gender" width:15px>
-                    <option value="성별" selected(초기 선택된 항목)>성별</option>
-                    <option value="남자">남자</option>
-                    <option value="여자">여자</option></td>
-        </select>
-      </tr>
-      <td><h4>본인 확인 이메일</td> : <td><input type="text" name="email" /></h4></td>
-      </tr>
-      <td><h4>전화번호</td> : <td><input type="text" name="number" placeholder="전화번호 입력"/></h4></td>
-      </tr>
-    </table>
-    <br>
-        <input type="submit" value="가입하기" />
-        <input type="submit" value="취소" onclick = "location.href='login.html'"; />
-    </center>
-  </body>
+<body>
+   
+    <form method="post" action="/sign_up" onsubmit="return check()">
+
+<h2 align="center">회원가입</h2>
+ 
+   <table align="center" border="3" cellspacing="0"  >
+       <tr>
+          <td colspan="5" height="30" align="center" bgcolor="pink" span style="color:black;">회원기본정보</td>
+          
+        </tr>
+        <tr> 
+            <td>이메일:</td>
+            <td colspan="4"><input type="text" name="email" id="email">
+            예)id@domain.com</td>
+       </tr>
+    
+       <tr>
+          <td >비밀번호:</td>
+           <td colspan="4"><input type="password" maxlength="12" name="pw" id="pw" > 4~12자리의 영문 대소문자와 숫자로만 입력</td>
+       </tr>
+       <tr>
+          <td >비밀번호확인:</td>
+           <td colspan="5"><input type="password" name="repw" id="repw" maxlength="12"></td>
+           
+       </tr>
+       <tr>
+          <td>이름:</td>
+          <td colspan="3"><input type="text" name="name" id="name"></td>
+        </tr>
+        <tr>
+            <td>나이:</td>
+            <td colspan="3"><input type="text" name="age" id="age"></td>
+          </tr>
+          <td>생년월일:</td>
+            <td colspan="3"><input type="text" name="birth" id="birth"></td>
+        <tr>
+            <td>전화번호:</td>
+            <td colspan="3"><input type="text" name="phone" id="phone"></td>
+          </tr>
+  
+    <tr>
+      <td>취미:</td>
+      <td colspan="3"><input type="text" name="hobby" id="hobby"></td>
+    </tr>
+</table>
+ 
+<p align="center">
+        <input type="submit" value="회원가입">
+         <input type="reset" value="다시입력">
+  </p>
+ 
+   </form>
+</body>
 </html>
