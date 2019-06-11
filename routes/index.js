@@ -40,6 +40,7 @@ router.get('/', function(req, res, next) {
   });
 });
 
+/*로그아웃하기*/
 router.get('/logout', function(req, res, next) {
   
   pool.getConnection(function(err, conn){
@@ -50,13 +51,12 @@ router.get('/logout', function(req, res, next) {
       } else {
         res.send('로그아웃 할 정보가 없습니다.');
       }
-      
-      
       conn.release();
     });
   });
 });
 
+/*회원탈퇴*/
 router.get('/delete', function(req, res, next) {
   
   pool.getConnection(function(err, conn){
@@ -128,4 +128,4 @@ router.post('/Login', function(req, res, next) {
   });
 });
 
-module.exports = router;
+module.exports = router;  
