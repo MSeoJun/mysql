@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+ <head>
+   <title>Test</title>
+   <link rel='stylesheet' href='/stylesheets/style.css' />
+   <style>
+     td,th {
+       padding: 10px;
+       text-align: center;
+     }
+   </style>
+ </head>
+ <body>
+     <center>
+    <table border=1; style="font-size: 18px; border-collapse: collapse">
+        <tr>
+            <td>ID값</td>
+            <td>제목</td>
+            <td>내용</td>
+            <td>작성자</td>
+            <td>삭제하기</td>
+            </tr>
+        <% for (const result of results) { %>
+        <tr>
+            <th>
+            <%= result.id %>
+            </th>
+            <td>
+                <%= result.title %>
+            </td>
+            <td>
+                <%= result.content %>
+            </td>
+            <td>
+                <%= result.name %>
+            </td>
+            <td>
+                <a href="final?title=<%= result.title %>">삭제하기</a>
+            </td>
+        </tr>
+        <% } %>
+    </table>
+    <a href="/board/node"><p>게시물 삭제</p></a>
+    </center>
+
+
+
+
+ </body>
+</html>
