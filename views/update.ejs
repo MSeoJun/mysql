@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title>Update</title>
+</head>
+<body>
+   <center>
+       <form action="/board/ud" method="POST">
+        <input type="hidden" name="reqid" value="<%= reqid %>"/>
+           <table border="1" style="border-collapse: collapse">
+                <tr>
+                    <td>
+                       <p>수정할 제목을 입력해주세요.</p>
+                    </td>
+                    <td>
+                        <input type="text" name="title" value="<%= title %>">
+                    </td>
+               </tr>
+               <tr>   
+                    <td>
+                        <p>수정할 내용을 입력해주세요.</p>
+                    </td>
+                    <td>
+                        <textarea name="description" cols="30" rows="10" value="<%= content %>"></textarea>
+                    </td>
+               </tr>
+           </table>
+           <br>
+           <input type="submit">
+       </form>
+   </center>
+</body>
+</html>
