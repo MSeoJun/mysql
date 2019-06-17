@@ -10,7 +10,7 @@ const pool = mysql.createPool({
   database        : 'irving',
   dateStrings     : 'date' 
 });
-
+ 
 /*게시판으로 이동*/
 router.get('/notice', function(req, res, next) {
 
