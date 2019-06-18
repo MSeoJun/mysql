@@ -1,15 +1,7 @@
 var express = require('express');  
 var router = express.Router();
-const mysql = require('mysql');
 const bodyParser = require('body-parser');
-const pool = mysql.createPool({
-  connectionLimit : 10, 
-  host            : 'localhost',
-  user            : 'root',
-  password        : 'noo1128148',
-  database        : 'irving',
-  dateStrings     : 'date' 
-});
+const pool = require('../config/dbconfig');
 
 /*회원정보 페이지로*/
 router.get('/index', function(req, res, next) {

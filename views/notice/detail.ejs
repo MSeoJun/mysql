@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <title></title>
+   <style> 
+      td,th{
+          padding: 10px;
+          text-align: center;
+      }
+   </style>
+</head>
+<body>
+   <center>
+       <form action="/board/detail" method="POST">
+           <table border="1" width="300" height="130" style="border-collapse: collapse">
+            <% for (const result of results) { %>
+                <tr>
+                    <th>
+                        제목
+                    </th>
+                    <th> 
+                        <%= result.title %>
+                    </th>
+                    <th rowspan="2"> 
+                        <!-- <input type="hidden" name="name" value="<%= results.name %>"> -->
+                    </th>
+                    </tr>
+                    <tr>
+                    <td>
+                        내용
+                    </td>
+                    <td>
+                        <%= result.content %>
+                    </td>
+                    <% } %>
+               </tr>
+           </table>
+           <br><br>
+           댓글작성 : 
+           <input type="text" placeholder="댓글을 입력해주세요.">
+           <input type="submit" value="작성">
+       </form>
+       <a href="/board/update?id=<%= result.id %>&name=<%= results.name %>"><p>수정하기</p></a>
+   </center>
+</body>
+</html>

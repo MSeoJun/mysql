@@ -16,20 +16,16 @@
         <tr>
             <td>ID값</td>
             <td>제목</td>
-            <td>내용</td>
             <td>작성자</td>
             <td>게시물 삭제하기</td>
             </tr>
         <% for (const result of results) { %>
         <tr>
             <th>
-            <%= result.id %>
+            <%= result.id %> 
             </th>
-            <td> 
-            <a href="/board/update?id=<%= result.id %>&title=<%= result.title %>&content=<%= result.content %>&name=<%= result.name %>"><%= result.title %></a>
-            </td>
-            <td>
-                <%= result.content %>
+            <td>  
+              <a href="/board/tkd?id=<%= result.id %>"><%= result.title %></a>
             </td>
             <td>
                 <%= result.name %>
@@ -39,9 +35,19 @@
             </td>
         </tr>
         <% } %>
-    </table>
-    <br>
+        </table>
+        <table>
+    <td>
     <a href="/board/create"><button>게시물 등록</button></a>
+    </td> 
+    <td>
+    <form action="/logout">
+        <button >
+          로그아웃하기
+        </button>
+      </form>
+    </td>
+    </table>
     </center>
 
 

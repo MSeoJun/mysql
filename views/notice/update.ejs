@@ -5,7 +5,7 @@
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <title>Update</title>
-   <style>
+   <style> 
        .box{
            outline: none;
            border: none;
@@ -30,12 +30,13 @@
                         <p>수정할 내용을 입력해주세요.</p>
                     </td>
                     <td>
-                        <textarea name="description" cols="30" rows="10" value="<%= content %>"></textarea>
+                        <textarea name="content" cols="30" rows="10"><%= content %></textarea>
                     </td>
                </tr>
            </table>
            <br>
-           <input type="submit">
+           <input type="submit" value="수정">
+           <a href="/board/notice"><input type="button" value="뒤로가기"></a>
        </form>
    </center>
 </body>
