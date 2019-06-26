@@ -4,21 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>create</title>
     <style>
         .title1{
             outline: none;
             border: none;
+            background-color: #2c3338;
+            color: #ffffff;
         }
+
+        .content1{
+            background-color: #2c3338;
+            color: #ffffff;
+        }
+
+        body {
+  background-color: #2c3338;
+  color: #ffffff;
+  margin: 0;
+  min-height: 100%;
+}
+
+.ip {
+    background-color: #2c3338; color: #ffffff
+  }
+
+  .ip:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid powderblue;
+    cursor:pointer;
+  }
     </style>
 </head>
-<body>
+<body> 
     <center> 
         <form action="/board/create2" method="POST">
-            <table border="1" style="border-collapse: collapse">
+            <table border="1" style="border-collapse: collapse; border: 1px solid white;">
                     <tr>
                         <td>
-                            <p>제목을 입력해주세요</p>
+                            <p>제목을 입력해주세요.</p>
                         </td>
                         <td>
                             <input type="text" class="title1" name="title" placeholder="제목을 입력해주세요.">
@@ -29,14 +54,14 @@
                             <p>내용을 입력해주세요</div></p>
                         </td>
                         <td>
-                            <textarea name="content" cols="30" rows="10" placeholder="내용을 입력해주세요."></textarea>
+                            <textarea name="content" cols="30" rows="10" class="content1" placeholder="내용을 입력해주세요." style="border:0;" ></textarea>
                         </td>
                     </tr>
      
                 </table>
                 <br>
-                <input type="submit">
-                <a href="/board/notice"><input type="button" value="뒤로가기"></a>
+                <input type="submit" class="ip">
+                <a href="/board/notice"><input type="button" class="ip" value="뒤로가기"></a>
         </form>
     </center>
 </body>
