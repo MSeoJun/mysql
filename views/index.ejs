@@ -1,20 +1,40 @@
 <!DOCTYPE html>
 <html>
  <head>
-   <title>Test</title>
+   <title>회원정보 페이지</title>
    <link rel='stylesheet' href='/stylesheets/style.css' />
    <style>
      td,th {
        padding: 10px;
        text-align: center;
      }
+
+     body {
+  background-color: #2c3338;
+  color: #ffffff;
+  margin: 0;
+  min-height: 100%;
+}
+
+button {
+    background-color: #2c3338; color: #ffffff;
+
+    
+  }
+
+  button:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid powderblue;
+    cursor:pointer;
+  }
    </style>
    <script>
      alert('이미 로그인되어있어, 회원정보 보기페이지로 이동합니다.');
    </script>
  </head>
  <body>
-   <table border=1; style="font-size: 18px; border-collapse: collapse">
+   <table border="1" style="font-size: 18px; border-collapse: collapse; border: 1px solid white;">
        <tr>
            <td>ID값</td>
            <td>이름</td>
@@ -58,15 +78,16 @@
 
          </td>
          <td>
-           <a href="/delete?num=<%= result.num %>"><p>회원아이디 삭제하기</p></a>
+           <a href="/delete?num=<%= result.num %>" style="text-decoration:none; color: red"><p>!회원아이디 삭제하기!</p></a>
            
          </td>
        </tr>
      <% } %>
    </table>
    <center> 
+     <br>
      <form action="/logout">
-       <button >
+       <button>
          로그아웃하기
        </button>
      </form>
