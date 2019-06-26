@@ -1,6 +1,6 @@
 <html>
  <head>
-  <title>회원가입</title> 
+  <title>회원가입 페이지</title> 
   <script language="javascript" src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
   <script>
  
@@ -12,39 +12,7 @@
       const getMail = RegExp(/^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/);
       const getCheck= RegExp(/^[a-zA-Z0-9]{4,12}$/);
       const getName= RegExp(/^[가-힣]+$/);
- 
-
-      //이메일 공백 확인
-      if($("#email").val() == ""){
-        alert("이메일을 입력해주세요");
-        $("#email").focus();
-        return false;
-      }
- 
-      //이메일 유효성 검사
-      if(!getMail.test($("#email").val())){
-        alert("이메일형식에 맞게 입력해주세요")
-        $("#email").val("");
-        $("#email").focus();
-        return false;
-      }
- 
-      //이름의 유효성 검사
-      if(!getCheck.test($("#tbID").val())){
-        alert("형식에 맞게 입력해주세요");
-        $("#tbID").val("");
-        $("#tbID").focus();
-        return false;
-      }
- 
-      //비밀번호
-      if(!getCheck.test($("#pw").val())) {
-      alert("비밀번호를 입력해주세요.");
-      $("#pw").val("");
-      $("#pw").focus();
-      return false;
-      }
- 
+      
       //비밀번호 똑같은지
       if($("#pw").val() != ($("#repw").val())){ 
       alert("비밀번호가 틀렸습니다.");
@@ -56,17 +24,11 @@
  
       //이름 유효성
       if (!getName.test($("#name").val())) {
-        alert("이름을 똑바로 쓰세요.");
+        alert("이름을 다시 확인해주세요..");
         $("#name").val("");
         $("#name").focus();
         return false;
       }
-
-      if($("#ag").val() == ""){
-                alert("나이를 입력해주세요.");
-                $("#age").focus();
-                return false;
-            }
 
             //나이 유효성
             else if (!getage.test($("#age").val())) {
@@ -76,13 +38,6 @@
                 return false;
             }
 
-        //생일 공백 확인
-        if($("#birth").val() == ""){
-                alert("생년월일을 입력해주세요.");
-                $("#birth").focus();
-                return false;
-            }
-    
              //생일 유효성
              else if (!getbirth.test($("#birth").val())) {
                 alert("생년월일은 '년-월-일'로 입력해주세요.");
@@ -90,22 +45,7 @@
                 $("#birth").focus();
                 return false;
             }
-
-         //취미 공백 확인
-         if($("#hobby").val() == ""){
-                alert("취미를 입력해주세요.");
-                $("#hobby").focus();
-                return false;
-            }
    
-
-        //전화번호 공백 확인
-       if($("#phone").val() == ""){
-                alert("전화번호를 입력해주세요.");
-                $("#phone").focus();
-                return false;
-            }
-
              //전화번호 유효성
              else if (!getphone.test($("#phone").val())) {
                 alert("전화번호는 '앞자리-중간자리-끝자리'로 입력해주세요.");
@@ -116,12 +56,29 @@
 
       if(check_jumin() ==false){
         return false;
-      }
-
-       
-
+      }  
           }
   </script>
+
+  <style>
+  body {
+  background-color: #2c3338;
+  color: #ffffff;
+  margin: 0;
+  min-height: 100%;
+}
+
+.qjxms {
+    background-color: #2c3338; color: #ffffff
+  }
+
+  .qjxms:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid powderblue;
+    cursor:pointer;
+  }
+  </style>
 </head>
 <body>
    
@@ -131,49 +88,49 @@
  
    <table align="center" border="3" cellspacing="0"  >
        <tr>
-          <td colspan="5" height="30" align="center" bgcolor="pink" span style="color:black;">회원기본정보</td>
+          <td colspan="5" height="30" align="center" bgcolor="powderblue" span style="color:black;">회원기본정보</td>
           
         </tr>
         <tr> 
             <td>이메일:</td>
-            <td colspan="4"><input type="text" name="email" id="email">
-            예)id@domain.com</td>
+            <td colspan="4"><input type="email" name="email" id="email" placeholder="이메일을 입력해주세요." required>
+            예)id@domain.com <button class="qjxms">중복확인</button></td>
        </tr>
     
        <tr>
           <td >비밀번호:</td>
-           <td colspan="4"><input type="password" maxlength="12" name="pw" id="pw" > 4~12자리의 영문 대소문자와 숫자로만 입력</td>
+           <td colspan="4"><input type="password" maxlength="12" name="pw" id="pw" placeholder="비밀번호를 입력해주세요" required> 4~12자리의 영문 대소문자와 숫자로만 입력</td>
        </tr>
        <tr>
           <td >비밀번호확인:</td>
-           <td colspan="5"><input type="password" name="repw" id="repw" maxlength="12"></td>
+           <td colspan="5"><input type="password" name="repw" id="repw" maxlength="12" required></td> 
            
        </tr>
        <tr>
           <td>이름:</td>
-          <td colspan="3"><input type="text" name="name" id="name"></td>
+          <td colspan="3"><input type="text" name="name" id="name" placeholder="이름을 입력해주세요." required></td>
         </tr>
         <tr>
             <td>나이:</td>
-            <td colspan="3"><input type="text" name="age" id="age"></td>
+            <td colspan="3"><input type="text" name="age" id="age" placeholder="나이를 입력해주세요." required></td>
           </tr>
           <td>생년월일:</td>
-            <td colspan="3"><input type="text" name="birth" id="birth"></td>
+            <td colspan="3"><input type="text" name="birth" id="birth" placeholder="0000-00-00" required></td>
         <tr>
             <td>전화번호:</td>
-            <td colspan="3"><input type="text" name="phone" id="phone"></td>
+            <td colspan="3"><input type="text" name="phone" id="phone" placeholder="000-0000-0000" required></td>
           </tr>
   
     <tr>
       <td>취미:</td>
-      <td colspan="3"><input type="text" name="hobby" id="hobby"></td>
+      <td colspan="3"><input type="text" name="hobby" id="hobby" placeholder="취미를 입력해주세요." required></td>
     </tr>
 </table>
  
 <p align="center">
-        <input type="submit" value="회원가입">
+        <input type="submit" class="qjxms" value="회원가입">
       
-         <input type="reset" value="다시입력">
+         <input type="reset" class="qjxms" value="다시입력">
   </p>
  
    </form>
