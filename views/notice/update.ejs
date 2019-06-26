@@ -9,20 +9,40 @@
        .box{
            outline: none;
            border: none;
+           background-color: #2c3338;
+           color: #ffffff;
        }
+
+       body {
+  background-color: #2c3338;
+  color: #ffffff;
+  margin: 0;
+  min-height: 100%;
+}
+
+.tr {
+    background-color: #2c3338; color: #ffffff
+  }
+
+  .tr:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid powderblue;
+    cursor:pointer;
+  }
    </style>
 </head>
 <body>
    <center>
        <form action="/board/ud" method="POST">
         <input type="hidden" name="reqid" value="<%= reqid %>"/>
-           <table border="1" style="border-collapse: collapse">
+           <table border="1" style="border-collapse: collapse; border: 1px solid white;">
                 <tr>
                     <td>
                        <p>수정할 제목을 입력해주세요.</p>
                     </td>
                     <td>
-                        <input type="text" name="title" class="box" value="<%= title %>">
+                        <input type="text" name="title" class="box" value="<%= title %>" >
                     </td>
                </tr>
                <tr>   
@@ -30,13 +50,13 @@
                         <p>수정할 내용을 입력해주세요.</p>
                     </td>
                     <td>
-                        <textarea name="content" cols="30" rows="10"><%= content %></textarea>
+                        <textarea name="content" cols="30" rows="10" class="box" style="border:0;"><%= content %></textarea>
                     </td>
                </tr>
            </table>
            <br>
-           <input type="submit" value="수정">
-           <a href="/board/notice"><input type="button" value="뒤로가기"></a>
+           <input type="submit" class="tr" value="수정">
+           <a href="/board/notice"><input type="button" class="tr"value="뒤로가기"></a>
        </form>
    </center>
 </body>
