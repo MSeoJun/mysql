@@ -56,7 +56,6 @@ router.get('/delete', function(req, res, next) {
     }
     conn.query(`DELETE FROM user WHERE num = '${req.query.num}'`, function(err, results){
       conn.release();
-      req.session.destroy();
       res.redirect('/');
     });
   });
