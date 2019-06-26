@@ -1,49 +1,83 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-   <title></title>
-   <style> 
-      td,th{
-          padding: 10px;
-          text-align: center;
-      }
-   </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>detail</title>
+    <style>
+    th,td{
+        text-align: center;
+        padding: 10px;
+    }
+
+    table {
+        table-layout:fixed; 
+        }
+
+        body {
+  background-color: #2c3338;
+  color: #ffffff;
+  margin: 0;
+  min-height: 100%;
+}
+
+.iu {
+    background-color: #2c3338; color: #ffffff
+  }
+
+  .iu:hover {
+    background-color: white;
+    color: black;
+    border: 2px solid powderblue;
+    cursor:pointer;
+  }
+    </style>
 </head>
 <body>
-   <center>
-       <form action="/board/detail" method="POST">
-           <table border="1" width="300" height="130" style="border-collapse: collapse">
-            <% for (const result of results) { %>
+    <center>
+        <form action="/board/comment" method="POST">
+        <table border="1" style="border-collapse: collapse; border: 1px solid white;">
+        <% for (const result of results) { %>
+            <tr>
+                    <th>제목</th>
+                    <th> <%= result.title %> </th>
+                    <th rowspan="2"> <a href="/board/update?id=<%= result.id %>&name=<%= result.name %>&title=<%= result.title %>&content=<%= result.content %>" class="iu">수정하기</a> </th>
+
+                </tr>
                 <tr>
-                    <th>
-                        제목
-                    </th>
-                    <th> 
-                        <%= result.title %>
-                    </th>
-                    <th rowspan="2"> 
-                        <!-- <input type="hidden" name="name" value="<%= results.name %>"> -->
-                    </th>
-                    </tr>
-                    <tr>
-                    <td>
-                        내용
-                    </td>
-                    <td>
-                        <%= result.content %>
-                    </td>
+                    <td>내용</td>
+                    <td> <%= result.content %> </td>
                     <% } %>
-               </tr>
-           </table>
-           <br><br>
-           댓글작성 : 
-           <input type="text" placeholder="댓글을 입력해주세요.">
-           <input type="submit" value="작성">
-       </form>
-       <a href="/board/update?id=<%= result.id %>&name=<%= results.name %>"><p>수정하기</p></a>
-   </center>
+                </tr>
+            </table>
+            <br><br>
+            
+            <br><br>
+            <table border="1"style="border-collapse: collapse;">
+                <tr>
+                    <input type="hidden" name="id" value="<%= id %>">
+                    <td colspan="2">댓글 작성하기 : <input type="text" name="content" placeholder="댓글을 입력해주세요."><input type="submit" class="iu" value="작성">
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        댓글
+                    </td>
+                    <% for (const coms of com) { %>
+                        <tr>
+                        <td>
+                            작성자 : <%= coms.email %>
+                            </td>
+                            <td>
+                            내용 : <%= coms.content %>
+                        </td>
+                    </tr>
+                    <% } %>    
+                </tr>
+            </table>
+            <br>
+            <a href="/board/notice"><input type="button" class="iu" value="뒤로가기"></a>
+        </form>
+    </center>
 </body>
 </html>
