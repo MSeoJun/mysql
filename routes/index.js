@@ -112,7 +112,7 @@ router.post('/Login', function(req, res, next) {
         res.render('lgc', { results: results , id: id, pw: pw});
       } else {
         res.render('lgcheck');
-      }
+      } 
       
       conn.release();
     });

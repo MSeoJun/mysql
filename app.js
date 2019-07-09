@@ -4,14 +4,20 @@ var path = require('path');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 const bodyParser = require('body-parser');
-const session = require('express-session');
+const passport = require('passport');
+require('dotenv').config();
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var boardRouter = require('./routes/board');
- 
-var app = express();
+const authRouter = require('./routes/auth');
+const passportConfig = require('./passport');
 
+const session = require('express-session');
+ 
+const app = express();
+
+passportConfig(passport);
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 
@@ -34,6 +40,12 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/board', boardRouter);
+app.use('/auth', authRouter);
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -46,7 +58,7 @@ app.use(function(err, req, res, next) {
   res.locals.message = err.message;
   res.locals.error = req.app.get('env') === 'development' ? err : {};
 
-  // render the error page
+  // render the error page 
   res.status(err.status || 500);
   res.render('error');
 });
